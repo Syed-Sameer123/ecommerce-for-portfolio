@@ -49,19 +49,22 @@ const Cart: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md divide-y divide-gray-200 dark:divide-gray-700">
               {items.map((item) => (
-                <div key={item.product.id} className="flex items-center p-6 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <div
+                  key={item.product.id}
+                  className="flex flex-col sm:flex-row sm:items-center gap-4 p-6"
+                >
                   <img
                     src={item.product.image}
                     alt={item.product.name}
                     className="w-20 h-20 object-cover rounded-lg"
                   />
-                  
-                  <div className="flex-1 ml-6">
+
+                  <div className="flex-1">
                     <Link
                       to={`/products/${item.product.id}`}
-                      className="text-lg font-semibold text-gray-900 dark:text-white hover:text-amber-600 dark:hover:text-amber-400"
+                      className="text-lg font-semibold text-gray-900 dark:text-white hover:text-amber-600 dark:hover:text-amber-400 block"
                     >
                       {item.product.name}
                     </Link>
@@ -73,7 +76,7 @@ const Cart: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="flex items-center space-x-4">
+                  <div className="flex flex-wrap sm:flex-nowrap items-center gap-3">
                     <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg">
                       <button
                         onClick={() => handleQuantityChange(item.product.id, item.quantity - 1)}
@@ -81,7 +84,7 @@ const Cart: React.FC = () => {
                       >
                         <Minus className="w-4 h-4" />
                       </button>
-                      <span className="px-4 py-2 text-center min-w-16 text-gray-900 dark:text-white">
+                      <span className="px-4 py-2 text-center text-gray-900 dark:text-white min-w-[40px]">
                         {item.quantity}
                       </span>
                       <button
@@ -91,7 +94,7 @@ const Cart: React.FC = () => {
                         <Plus className="w-4 h-4" />
                       </button>
                     </div>
-                    
+
                     <button
                       onClick={() => removeFromCart(item.product.id)}
                       className="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg"
@@ -108,7 +111,7 @@ const Cart: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Order Summary</h2>
-              
+
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-gray-600 dark:text-gray-400">
                   <span>Subtotal</span>
@@ -136,7 +139,7 @@ const Cart: React.FC = () => {
               >
                 Proceed to Checkout
               </button>
-              
+
               <Link
                 to="/products"
                 className="w-full block text-center text-amber-600 hover:text-amber-700 font-medium"
