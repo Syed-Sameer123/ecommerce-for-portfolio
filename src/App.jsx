@@ -5,6 +5,7 @@ import { WishlistProvider } from './contexts/WishlistContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
@@ -23,7 +24,13 @@ function App() {
         <WishlistProvider>
           <Router>
             <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+              {/* 🧠 Fixed Navbar */}
               <Header />
+
+              {/* ✅ Spacer to prevent overlap */}
+              <div className="h-16 lg:h-[70px]" />
+
+              {/* 👇 Main content starts below navbar */}
               <main>
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -38,6 +45,7 @@ function App() {
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
+
               <Footer />
             </div>
           </Router>
